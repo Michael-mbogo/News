@@ -9,7 +9,6 @@ class Source:
     self.url = url
     self.category = category
 
-
 class Articles:
   """
   Article class defines the article Object
