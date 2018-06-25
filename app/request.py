@@ -46,3 +46,5 @@ def process_results(source_list):
         source_results.append(source_object)
 
     return source_results
+
+def get_article(category)

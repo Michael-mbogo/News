@@ -11,6 +11,8 @@
         {% endif %}
     </head>
     <body>
+      <!-- Content block -->
+      {% block content %}
       <h3>business</h3>
       <ul>
         {{ macro.displaySourceList(business)}}
@@ -39,17 +41,6 @@
       <ul>
         {{ macro.displaySourceList(technology)}}
       </ul>
-
-
-
-
-
-
-
-
-
-
-
-
+      {% endblock%}
     </body>
 </html>
