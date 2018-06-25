@@ -1,1 +1,55 @@
-<h1>YEs</h1>
+{% import 'macros.html' as macro%}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome to News </title>
+        {% endif %}
+    </head>
+    <body>
+      <h3>business</h3>
+      <ul>
+        {{ macro.displaySourceList(business)}}
+      </ul>
+      <h3>Entertainment</h3>
+      <ul>
+        {{ macro.displaySourceList(entertainment)}}
+      </ul>
+      <h3>General</h3>
+      <ul>
+        {{ macro.displaySourceList(general)}}
+      </ul>
+      <h3>Health</h3>
+      <ul>
+        {{ macro.displaySourceList(health)}}
+      </ul>
+      <h3>Science</h3>
+      <ul>
+        {{ macro.displaySourceList(science)}}
+      </ul>
+      <h3>Sports</h3>
+      <ul>
+        {{ macro.displaySourceList(sports)}}
+      </ul>
+      <h3>Technology</h3>
+      <ul>
+        {{ macro.displaySourceList(technology)}}
+      </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
