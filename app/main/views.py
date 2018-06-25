@@ -1,8 +1,8 @@
-from flask import render_template
-from app import app
-from .request import get_source
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_source
 
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -21,7 +21,7 @@ def index():
     return render_template('index.html', title = title,business = business_source, entertainment = entertainment_source, general = general_source, health = health_source, science = science_source, sports = sports_source, technology = technology_source)
 
 
-@app.route('/source/<id>')
+@main.route('/source/<id>')
 def source(id):
 
     articles = get_articles(id)
