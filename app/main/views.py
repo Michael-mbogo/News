@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_source
+from ..request import get_source,get_article
 
 @main.route('/')
 def index():
@@ -22,10 +22,10 @@ def index():
 
 
 @main.route('/source/<id>')
-def article(id):
+def source(id):
 
-    articles = get_articles(id)
+    articles = get_article(id)
 
-    article_id = id
-    title = f'{article_id}'
-    return render_template('article.html',title = title,article = article)
+    source_id = id
+    title = f'{source_id}'
+    return render_template('source.html',title = title,article = article)
