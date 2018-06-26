@@ -1,18 +1,20 @@
 import urllib.request,json
-from .models import source
+from .models import Source,Article
 
-Source = source.Source
+
 
 #Getting api_key
 api_key = None
 print(api_key)
 #Getting source base url
 base_url = None
+article_url = None
 
 def configure_request(app):
-    global api_key,base_url
-    api_key = app.config['MOVIE_API_KEY']
-    base_url = app.config['MOVIE_API_BASE_URL']
+    global api_key,base_url,article_url
+    api_key = app.config['SOURCE_API_KEY']
+    base_url = app.config['SOURCE_API_BASE_URL']
+    article_url = app.config['ARTICLE_API_BASE_URL']
 
 
 def get_source(category):
@@ -51,19 +53,21 @@ def process_results(source_list):
 
     return source_results
 
-def get_article(id):
+def get_article(title):
     '''
     function that gets the json response to url request
     '''
-    get_article_url = base_url.format(id,api_key)
+    get_article_url = article_url.format(title,api_key)
     with urllib.request.urlopen(get_article_url) as url:
         get_article_data = url.read()
         get_article_response = json.loads(get_article_data)
 
         article_results = None
 
-        if get_article_response['articles']
-        article_result_list = get_source_response['articles']
+        if get_article_response['articles']:
+            article_result_list = get_source_response['articles']
+            article_results = process_results(article_result_list)
+
     return article_results
 
 def process_results(article_list):
@@ -82,3 +86,5 @@ def process_results(article_list):
 
         article_object = Article(author,title,description,url,urlToImage,publishedAt)
         article_results.append(article_object)
+
+    return article_results
