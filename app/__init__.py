@@ -6,13 +6,13 @@ bootstrap = Bootstrap()
 
 def create_app(config_name):
 
-    app = Flask(__name__,instance_relative_config = True)
+    app = Flask(__name__)
 
     #creating app configuration
     app.config.from_object(config_options[config_name])
 
     #init extention
-    bootstrap = Bootstrap(app)
+    bootstrap.init_app(app)
 
     #regestering the blueprint
     from .main import main as main_blueprint
