@@ -1,116 +1,24 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
-{% block styles %}
-    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-
-{% endblock %}
-
-<!-- Content Block -->
-{% block content %}
-<div class="container">
-  <h1 class="header text-center" style="color:white;" >NEWS BRIEFS</h1>
-  <br>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h2>Business</h2>
-        </div>
-        <div class="panel-body">
-            <ul class="list-unstyled">
-                {{macro.displaySources(business)}}
-            </ul>
-
-        </div>
-      </div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title>  Welcome to the Greatest News Articles and Everything News Related Website Online </title>
+        {% endif %}
+    </head>
+    <body>
+      {% block content %}
+      <div>
+      <h3> SOURCES </h3>
+      <ul>
+        {{ macro.displayNewsList(sources) }}
+      </ul>
     </div>
-    <div class="col-md-6">
-      <!-- Entertainment -->
-      <div class="panel panel-primary">
-          <div class="panel-heading">
-              <h2>Entertainment</h2>
-          </div>
-          <div class="panel-body">
-              <ul class="list-unstyled">
-                  {{macro.displaySources(entertainment)}}
-              </ul>
-
-          </div>
-        </div>
-      </div>
-  </div>
-      <br>
-    <div class="row">
-      <div class="col-md-6">
-        <!-- General -->
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2>General</h2>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                {{macro.displaySources(general)}}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <!-- Health -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2>Health</h2>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                {{macro.displaySources(health)}}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <!-- Science -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2>Science</h2>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                {{macro.displaySources(science)}}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <!-- Health -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2>Sports</h2>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                {{macro.displaySources(sports)}}
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <!-- Health -->
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h2>Technology</h2>
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled">
-                {{macro.displaySources(technology)}}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-  </div>
-
-{% endblock %}
+    {% endblock %}
+    </body>
+</html>
