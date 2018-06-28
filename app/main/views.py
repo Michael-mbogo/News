@@ -22,10 +22,10 @@ def index():
 
 
 @main.route('/source/<id>')
-def source(id):
+def article(id):
 
-    articles = get_article(id)
+    article = get_article(id)
 
-    source_id = id
-    title = f'{source_id}'
+
+    title = f'{id}'
     return render_template('source.html',title = title,article = article)
