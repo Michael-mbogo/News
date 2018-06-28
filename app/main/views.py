@@ -1,31 +1,19 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..request import get_source,get_article
+from ..request import get_news,get_articles
+import json
 
+#views
 @main.route('/')
 def index():
+    # Getting news sources
+    news_sources = get_news("General")
+    #getting articles
 
-    '''
-    View root page function that returns the index page and its data
-    '''
+    title = 'Home - Welcome to the Greatest News Articles and Everything News Related Website Online'
+    return render_template('index.html', title = title,sources = news_sources)
 
-    business_source = get_source('business')
-    entertainment_source = get_source('entertainment')
-    general_source = get_source('general')
-    health_source = get_source('health')
-    science_source = get_source('science')
-    sports_source = get_source('sports')
-    technology_source = get_source('technology')
-
-    title = 'News Briefs'
-    return render_template('index.html', title = title,business = business_source, entertainment = entertainment_source, general = general_source, health = health_source, science = science_source, sports = sports_source, technology = technology_source)
-
-
-@main.route('/source/<id>')
-def article(id):
-
-    article = get_article(id)
-
-
-    title = f'{id}'
-    return render_template('source.html',title = title,article = article)
+@main.route('/news/<name>')
+def news(name):
+    articles = get_articles(name)
+    return render_template('news.html', articles = articles)
